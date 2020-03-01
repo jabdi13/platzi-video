@@ -32,7 +32,7 @@ const Login = props => {
           <input
             name="email"
             aria-label="Correo"
-            className="input"
+            className="register__input"
             type="text"
             placeholder="Correo"
             onChange={handleInput}
@@ -40,7 +40,7 @@ const Login = props => {
           <input
             name="password"
             aria-label="Contraseña"
-            className="input"
+            className="register__input"
             type="password"
             placeholder="Contraseña"
             onChange={handleInput}
@@ -61,7 +61,7 @@ const Login = props => {
             <img src={twitterIcon} alt="Twitter" />Inicia sesión con Twitter
           </div>
         </section>
-        <p className="login__container--register">No tienes ninguna cuenta <Link to="/register">Registrate</Link></p>
+        <p className="login__container--register">No tienes ninguna cuenta {' '} <Link to="/register">Registrate</Link></p>
       </section>
     </section>
   );

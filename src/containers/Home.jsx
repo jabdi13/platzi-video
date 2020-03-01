@@ -9,7 +9,10 @@ import '../assets/styles/App.scss';
 const Home = ({ myList, trends, originals }) => {
   return (
     <>
-      <Search />
+      <Search isHome />
+      {myList.length < 1 && trends.length < 1 && originals.length < 1 && (
+        <h1 className="main__notFoundTitle">No se encontrarón resultados</h1>
+      )}
       {myList.length > 0 && (
         <Categories title="Mi lista">
           <Carousel>
@@ -48,6 +51,13 @@ const Home = ({ myList, trends, originals }) => {
 };
 
 const mapStateToProps = state => {
+  if (state.searchText !== '') {
+    return {
+      myList: state.myList.filter(item => item.title.toLowerCase().indexOf(state.searchText) !== -1),
+      trends: state.trends.filter(item => item.title.toLowerCase().indexOf(state.searchText) !== -1),
+      originals: state.originals.filter(item => item.title.toLowerCase().indexOf(state.searchText) !== -1)
+    }
+  }
   return {
     myList: state.myList,
     trends: state.trends,

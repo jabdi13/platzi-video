@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -9,15 +10,17 @@ import logo from '../assets/static/logo-platzi-video-BW2.png';
 import userIcon from '../assets/static/default-avatar.png';
 
 const Header = props => {
-  const { user } = props;
+  const { user, isHome } = props;
   const hasUser = Object.keys(user).length > 0;
-
+  const headerStyle = classNames('header', {
+    'header-isHome': isHome
+  });
   const handleLogout = () => {
     props.logoutRequest({});
   };
 
   return(
-    <header className="header">
+    <header className={`${headerStyle} header`}>
       <Link to="/">
         <img className="header__img" src={logo} alt="Platzi vídeo logo" />
       </Link>

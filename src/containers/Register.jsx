@@ -33,7 +33,7 @@ const Register = props => {
           <input
             name="name"
             aria-label="Nombre"
-            className="input"
+            className="login__input"
             type="text"
             placeholder="Nombre"
             onChange={handleInput}
@@ -41,7 +41,7 @@ const Register = props => {
           <input
             name="email"
             aria-label="Correo"
-            className="input"
+            className="login__input"
             type="text"
             placeholder="Correo"
             onChange={handleInput}
@@ -49,7 +49,7 @@ const Register = props => {
           <input
             name="password"
             aria-label="Contraseña"
-            className="input"
+            className="login__input"
             type="password"
             placeholder="Contraseña"
             onChange={handleInput}
@@ -63,7 +63,7 @@ const Register = props => {
 };
 
 const mapDispatchToProps = {
-  registerRequest
+  registerRequest,
 };
 
 export default connect(null, mapDispatchToProps)(Register);
