@@ -3,12 +3,12 @@ const reducer = (state, action) => {
     case 'SET_FAVORITE':
       return {
         ...state,
-        myList: [...state.myList, action.payload]
+        myList: [...state.myList, action.payload],
       };
     case 'DELETE_FAVORITE':
       return {
         ...state,
-        myList: state.myList.filter(items => items.id !== action.payload)
+        myList: state.myList.filter((items) => items.id !== action.payload),
       };
     case 'LOGIN_REQUEST':
       return {
@@ -28,13 +28,13 @@ const reducer = (state, action) => {
     case 'GET_VIDEO_SOURCE':
       return {
         ...state,
-        playing: state.trends.find(item => item.id === Number(action.payload))
-        || state.originals.find(item => item.id === Number(action.payload))
-        || []
+        playing: state.trends.find((item) => item.id === Number(action.payload)) ||
+        state.originals.find((item) => item.id === Number(action.payload)) ||
+        [],
       };
     case 'SEARCH_VIDEO':
       if (action.payload === '') {
-        return {...state};
+        return { ...state };
       }
       return {
         ...state,

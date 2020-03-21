@@ -9,17 +9,17 @@ import '../assets/styles/components/Header.scss';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
 import userIcon from '../assets/static/default-avatar.png';
 
-const Header = props => {
+const Header = (props) => {
   const { user, isHome } = props;
   const hasUser = Object.keys(user).length > 0;
   const headerStyle = classNames('header', {
-    'header-isHome': isHome
+    'header-isHome': isHome,
   });
   const handleLogout = () => {
     props.logoutRequest({});
   };
 
-  return(
+  return (
     <header className={`${headerStyle} header`}>
       <Link to="/">
         <img className="header__img" src={logo} alt="Platzi vídeo logo" />
@@ -28,21 +28,16 @@ const Header = props => {
         <div className="header__menu--profile">
           {hasUser ?
             <img src={gravatar(user.email)} alt={user.email} /> :
-            <img src={userIcon} alt="Avatar logo" />
-          }
+            <img src={userIcon} alt="Avatar logo" />}
           <p>Perfil</p>
         </div>
         <ul>
           {hasUser ?
-            <li><a href="/">{user.name}</a></li>
-            :
-            null
-          }
+            <li><a href="/">{user.name}</a></li> :
+            null}
           {hasUser ?
-            <li><a href="#logout" onClick={handleLogout}>Cerrar Sesión</a></li>
-            :
-            <li><Link to="/login">Iniciar sesión</Link></li>
-          }
+            <li><a href="#logout" onClick={handleLogout}>Cerrar Sesión</a></li> :
+            <li><Link to="/login">Iniciar sesión</Link></li>}
         </ul>
       </div>
     </header>
@@ -54,14 +49,14 @@ Header.propTypes = {
   logoutRequest: PropTypes.func,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     user: state.user,
   };
 };
 
 const mapDispatchToProps = {
-  logoutRequest
+  logoutRequest,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

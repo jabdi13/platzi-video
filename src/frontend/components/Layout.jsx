@@ -5,11 +5,11 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  return(
+  return (
     <div className="App">
       <Header isHome={location.pathname === '/'} />
       {children}
-      <Footer isHome={location.pathname === '/'}  />
+      <Footer isHome={location.pathname === '/'} />
     </div>
   );
 };

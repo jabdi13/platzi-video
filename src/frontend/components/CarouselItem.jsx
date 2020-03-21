@@ -12,13 +12,13 @@ const CarouselItem = (props) => {
   const { id, cover, title, year, contentRating, duration, isList } = props;
   const handleSetFavorite = () => {
     props.setFavorite({
-      id, cover, title, year, contentRating, duration
-    })
+      id, cover, title, year, contentRating, duration,
+    });
   };
   const handleDeleteFavorite = (itemId) => {
-    props.deleteFavorite(itemId)
+    props.deleteFavorite(itemId);
   };
-  return(
+  return (
     <div className="carousel-item">
       <img className="carousel-item__img" src={cover} alt={title} />
       <div className="carousel-item__details">
@@ -30,20 +30,21 @@ const CarouselItem = (props) => {
               alt="Play icon"
             />
           </Link>
-          {isList ?
+          {isList ? (
             <img
               className="carousel-items__details--buttons"
               src={removeIcon}
               alt="Remove icon"
               onClick={() => handleDeleteFavorite(id)}
-            /> :
+            />
+          ) : (
             <img
               className="carousel-items__details--buttons"
               src={plusIcon}
               alt="Plus icon"
               onClick={handleSetFavorite}
             />
-          }
+          )}
         </div>
         <p className="carousel-items__details--title">{title}</p>
         <p className="carousel-items__details--subtitle">
@@ -59,7 +60,7 @@ CarouselItem.propTypes = {
   title: PropTypes.string,
   year: PropTypes.number,
   contentRating: PropTypes.string,
-  duration: PropTypes.number
+  duration: PropTypes.number,
 };
 
 const mapDispatchToProps = {

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getVideoSource } from '../actions';
 import { Redirect } from 'react-router-dom';
+import { getVideoSource } from '../actions';
 import '../assets/styles/components/Player.scss';
 
-const Player = props => {
-  const { id } = props.match.params;
+const Player = (props) => {
+  const { match, playing } = props;
+  const { id } = match.params;
   const [isLoading, setLoading] = useState(true);
-  const hasPlaying = Object.keys(props.playing).length > 0;
+  const hasPlaying = Object.keys(playing).length > 0;
 
   useEffect(() => {
     props.getVideoSource(id);
@@ -15,13 +16,13 @@ const Player = props => {
   }, []);
 
   if (isLoading) {
-    return <h1>Cargando...</h1>
+    return <h1>Cargando...</h1>;
   }
 
   return hasPlaying ? (
     <div className="Player">
       <video controls autoPlay>
-        <source src={props.playing.source} type="video/mp4" />
+        <source src={playing.source} type="video/mp4" />
       </video>
       <div className="Player-back">
         <button type="button" onClick={() => props.history.goBack()}>
@@ -32,7 +33,7 @@ const Player = props => {
   ) : <Redirect to="/404/" />;
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     playing: state.playing,
   };

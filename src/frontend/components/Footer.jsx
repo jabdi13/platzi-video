@@ -5,10 +5,10 @@ import classNames from 'classnames';
 const Footer = ({ isHome }) => {
 
   const footerStyle = classNames({
-    'footer-isHome':isHome
+    'footer-isHome': isHome,
   });
 
-  return(
+  return (
     <footer className={`${footerStyle} footer`}>
       <a href="/">Términos de uso</a>
       <a href="/">Declaración de privacidad</a>

@@ -4,17 +4,17 @@ import classNames from 'classnames';
 import { searchVideo } from '../actions';
 import '../assets/styles/components/Search.scss';
 
-const Search = props => {
+const Search = (props) => {
   const { isHome } = props;
   const inputStyle = classNames('input', {
-    isHome
+    isHome,
   });
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     props.searchVideo(event.target.value);
   };
 
-  return(
+  return (
     <section className="main">
       <h2 className="main__title">¿Qué quieres ver hoy?</h2>
       <input aria-label="Buscar" className={inputStyle} type="text" placeholder="Buscar..." onChange={handleChange} />
@@ -23,7 +23,7 @@ const Search = props => {
 };
 
 const mapDispatchToProps = {
-  searchVideo
+  searchVideo,
 };
 
 export default connect(null, mapDispatchToProps)(Search);
